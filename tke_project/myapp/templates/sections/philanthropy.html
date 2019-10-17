@@ -20,12 +20,17 @@
         <div class="cell">
                 <h5>{{ post.title }}</h5>
                 <p>{{post.description}}</p>
-                <p>{{post.published_date}}</p>
-                <p>{{post.created_date}}</p>
+                <p>Plublished : {{post.published_date}}</p>
+                <p>Event Date: {{post.created_date}}</p>
                 <div class="event-container">
                         <img class="thumbnail" src="{{ post.cover.url}}" alt="{{ post.title }}">
                         <div class="event-bottom-left">{{post.current_volunteers}}/{{post.max_volunteers}}</div>
-                        <div class="event-bottom-right">{{post.status}}</div>
+                        <div class="event-bottom-right">
+                                {% if post.status is False %}
+                                        Closed 
+                                {% else %} 
+                                        Open 
+                                {% endif %}</div>
                 </div>
                 <a href="#" class="button expanded">Sign Up</a>
         </div>
