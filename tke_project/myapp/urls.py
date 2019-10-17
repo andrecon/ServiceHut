@@ -10,4 +10,5 @@ urlpatterns = [
 		path('philanthropy/', philan.EventView.as_view(), name='philanthropy'),
 		path('post/', philan.CreateEventView.as_view()),
 		path('photoPost/',views.CreateImageView.as_view()),
+		path('signup/', views.SignUp.as_view(), name='signup'),
 ]

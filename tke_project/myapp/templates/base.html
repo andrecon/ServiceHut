@@ -34,12 +34,20 @@
                   <li>
                     <a href="#" class="hvr-underline-from-center">Contact Us</a>
                   </li>
-                  <li>
-                    <a href="/admin" class="hvr-underline-from-center">Log In</a>
-                  </li>
+                  {% if user.is_authenticated %}
                   <li>
                     <a href="#" class="hvr-underline-from-center">My Account</a>
                   </li>
+                  {% endif %}
+                  {% if not user.is_authenticated %}
+                  <li>
+                    <a href="{% url 'login' %}" class="hvr-underline-from-center">Log In</a>
+                  </li>
+                  {% else %}
+                  <li>
+                      <a href="{% url 'logout' %}" class="hvr-underline-from-center">Log Out</a>
+                  </li>
+                  {% endif %}
               </ul>
           </div>
       </div>
@@ -56,17 +64,21 @@
             <img src="../static/Images/TKE-Logo.png" >
   
           <p class="footer-links">
-            <a href="#" class="link-1">Home</a>
+            <a href="/" class="link-1">Home</a>
           
             <a href="#">About Us</a>
           
-            <a href="#">Philanthropy</a>
+            <a href="{% url 'philanthropy' %}">Philanthropy</a>
             
             <a href="#">Contact Us</a>
-            
-            <a href="#">Log In</a>
-
-            <a href="#">My Account</a>
+            {% if user.is_authenticated %}
+              <a href="#">My Account</a>
+            {% endif %}
+            {% if not user.is_authenticated %}
+              <a href="{% url 'login' %}">Log In</a>
+            {% else %}
+              <a href="{% url 'logout' %}">Log Out</a>
+            {% endif %}
           </p>
   
           <p class="footer-company-name">2019 © All Rights Reserved. <a href="#">Member Privacy</a> </p>

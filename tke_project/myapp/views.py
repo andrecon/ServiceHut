@@ -13,6 +13,9 @@ from django.urls import reverse_lazy
 from django.http import HttpResponse
 from .forms import GalleryForm
 
+from django.contrib.auth.forms import UserCreationForm
+from django.views import generic
+
 def index(request):
     context = {
         "variable":"App",
@@ -30,3 +33,8 @@ class CreateImageView(CreateView):
     form_class = GalleryForm
     template_name = 'sections/PhotoPost.html'
     success_url = reverse_lazy('index')
+
+class SignUp(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'registration/signup.html'
