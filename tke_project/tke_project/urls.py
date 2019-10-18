@@ -18,10 +18,13 @@ from django.urls import path, include
 
 from django.conf import settings # new
 from django.conf.urls.static import static # new
+from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('myapp.urls')),
+    path('accounts/', include('myapp.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('', include('myapp.urls'), name='home'),
 ]
 
 if settings.DEBUG: # new
