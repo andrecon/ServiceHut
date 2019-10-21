@@ -1,13 +1,70 @@
 {% extends 'base.html' %}
 
-{% block title %}Login{% endblock %}
+{% block title %}<title>Login</title>{% endblock %}
 
 {% block content %}
-<h2>Login</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Login</button>
-</form>
+<!-- <div id="content-container" class="container p-none">
+    <div class="lgn-container col-lg-8">
+        <form id="login-form" method="post" action="/login/">
+            {% csrf_token %}
+            <table class="table">
+                <tr>
+                    <td><label for="id_username">Username</label></td>
+                    <td><input id="id_username" name="username" 
+                               type="text" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><label for="id_password">Password</label></td>
+                    <td><input id="id_password" name="password" 
+                               type="password" class="form-control"></td>
+                </tr>
+            </table>
+            {% if form.errors %}
+                <p class=" label label-danger">
+                    Your username and password didn't match. 
+                    Please try again.
+                </p>
+            {% endif %}
 
+            <input type="submit" value="Login" 
+                   class="btn btn-primary pull-right" />
+            <input type="hidden" name="next" value="{{ next }}" />
+            <br>
+        </form>
+        <a id="createAccount" href="/signup/">If you don't have an account, click here to get your account</a>
+    </div>
+</div> -->
+
+
+
+  
+
+
+
+<form class="log-in-form" id="login-form" method="post" action="/login/">
+    {% csrf_token %}
+    <h4 class="text-center">Log in with you credentials</h4>
+    <table class="table">
+      <label>Username
+        <input id="id_username" name="username" type="text" class="form-control">
+      </label>
+      <label>Password
+        <input id="id_password" name="password" type="password" class="form-control">
+      </label>
+    </table>
+    {% if form.errors %}
+                <p class="label label-danger"> Your username and password didn't match. Please try again.</p>
+                <br>
+    {% endif %}
+    <input id="show-password" type="checkbox" onclick="showPassword()"><label for="show-password">Show password</label>
+    <br>
+    <input type="submit" class="button expanded" value="Login"></input>
+    <input type="hidden" name="next" value="{{ next }}" />
+
+    <p class="text-center"> <a id="createAccount" href="/signup/">If you don't have an account, click here to get your account</a></p>
+</form>
+{% endblock %}
+
+{% block scripts %}
+<script src="../../static/js/login.js"></script>
 {% endblock %}

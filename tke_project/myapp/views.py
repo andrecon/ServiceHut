@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 from .models import Gallery
 # Create your views here.
 from django.http import HttpResponse
@@ -11,10 +13,12 @@ from django.urls import reverse_lazy
 
 # Create your views here.
 from django.http import HttpResponse
+from . import forms
+from . import models
 from .forms import GalleryForm
 
-from django.contrib.auth.forms import UserCreationForm
-from django.views import generic
+# from django.contrib.auth.forms import UserCreationForm
+# from django.views import generic
 
 def index(request):
     context = {
@@ -34,7 +38,25 @@ class CreateImageView(CreateView):
     template_name = 'sections/PhotoPost.html'
     success_url = reverse_lazy('index')
 
-class SignUp(generic.CreateView):
-    form_class = UserCreationForm
-    success_url = reverse_lazy('login')
-    template_name = 'registration/signup.html'
+# class SignUp(generic.CreateView):
+#     form_class = UserCreationForm
+#     success_url = reverse_lazy('login')
+#     template_name = 'registration/signup.html'
+
+def signup(request):
+    if request.method == "POST":
+        form_instance = forms.RegistrationForm(request.POST)
+        if form_instance.is_valid():
+            form_instance.save()
+            return redirect("/login/")
+            # print("Hi")
+    else:
+        form_instance = forms.RegistrationForm()
+    context = {
+        "form":form_instance,
+    }
+    return render(request, "registration/signup.html", context=context)
+
+def logout_view(request):
+    logout(request)
+    return redirect("/login/")
