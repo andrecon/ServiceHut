@@ -3,10 +3,31 @@ from .models import Event
 from .models import Gallery
 from datetime import date
 
+from django.core.validators import validate_slug
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 class EventForm(forms.ModelForm):
+    # title = forms.CharField(label='Title', max_length=240, validators=[validate_slug])
+    # description = forms.CharField(label='Description', max_length=240)
+    # created_date = forms.DateField(label='Created Date')
+    # max_volunteers = forms.IntegerField(label='Max Volunteers')
+    # status = forms.BooleanField(label='Status'default=True)
+    # cover = forms.ImageField(label="Image Cover")
+    
+    # def save(self, request, commit=True):
+    #     new_event = models.Suggestion(
+    #         title = self.cleaned_data["title"],
+    #         description = self.cleaned_data["description"],
+    #         created_date = self.cleaned_data["created_date"],
+    #         max_volunteers = self.cleaned_data["max_volunteers"],
+    #         cover = self.cleaned_data["cover"],
+    #         status = self.cleaned_data["status"],
+    #         post_author = request.user
+    #     )
+    #     if commit:
+    #         new_event.save()
+    #     return new_event
 
     # created_date = DateField(input_formats=settings.DATE_INPUT_FORMATS)
     
