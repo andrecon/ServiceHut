@@ -1,8 +1,11 @@
 from django.db import models
 from datetime import datetime
 
-# Create your models here.
+from django.contrib.auth.models import User
 
+# Create your models here.
+# class UserProfile(models.Model):
+#     username = models.CharField(max_length=42)
 
 class Event(models.Model):
     title = models.TextField()
@@ -14,6 +17,8 @@ class Event(models.Model):
     cover = models.ImageField(upload_to='event_images/')
 
     status = models.BooleanField(default=True)
+
+    post_author = models.ForeignKey(User, default=1, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
