@@ -60,3 +60,6 @@ def signup(request):
 def logout_view(request):
     logout(request)
     return redirect("/login/")
+
+def contact(request):
+    return render(request, "sections/contact.html")
