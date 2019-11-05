@@ -16,7 +16,7 @@
 
 <div class="grid-x grid-margin-x small-up-2 medium-up-2 large-up-4">
         <!-- While this view is executing, self.object_list will contain the list of objects that the view is operating upon.-->
-        {% for post in object_list %}
+        {% for post in post_list %}
         <div class="cell">
                 <h5>{{ post.title }}</h5>
                 <p>{{post.description}}</p>
