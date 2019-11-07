@@ -314,7 +314,7 @@ ul li a {
 
 .event-container {
   position: relative;
-  text-align: center;
+  /* text-align: center; */
   color: black;
 }
 
@@ -570,6 +570,34 @@ hr.break_line:after {
   padding: 0 0.15em;  /* Padding size to cover <hr> at a certain area */
   background: white;
   color: #F8021E;
+}
+
+.button.expanded {
+  display: block;
+  width: 30%;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.cell {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  min-height: 0px;
+  min-width: 0px;
+  width: 27%;
+}
+
+.table {
+  display:table;
+  table-layout: fixed;
+  width: 27%;
+  border-collapse:collapse
+}
+
+.row {
+  display: table-row;
 }
 
 /* /Philanthropy */

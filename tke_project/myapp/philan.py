@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from .models import Gallery
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 
 # Built-in Django CreateView
 from django.views.generic import ListView, CreateView 
@@ -35,6 +37,16 @@ class CreateEventView(CreateView):
     form_class = EventForm
     template_name = 'sections/post.html'
     success_url = reverse_lazy('philanthropy')
+
+    # template_name = 'sections/post.html'
+    # model = Event
+    # success_url = reverse_lazy('philanthropy')
+    # form_class = EventForm
+
+    # def get_form(self, form_class=None):
+    #     form = super().get_form(form_class)
+    #     form.request = self.request
+    #     return form
 
 
 def index(request):
@@ -69,4 +81,32 @@ def index(request):
         "form":form_instance,
         "some_list":post_list["events"]
     }
+    for atr in post_list["events"]:
+        print(atr["title"])
     return render(request, "sections/philanthropy.html", context=context)
+
+
+@csrf_exempt
+@login_required(login_url='/login/')
+def posts_view(request):
+    if request.method == "GET":
+        event_query = models.Event.objects.all().order_by('-created_date')
+        post_list = {"events":[]}
+
+        suggestion_list = {"events":[]}
+        for s_q in event_query:
+            url = ""
+            if not str(s_q.cover)=="":
+                url=s_q.cover.url
+            post_list["events"] += [{
+                "title":s_q.title,
+                "post_author":s_q.post_author.username,
+                "created_date":s_q.created_date,
+                "description":s_q.description,
+                "max_volunteers":s_q.max_volunteers,
+                "cover":url,
+                "status":s_q.status,
+                "published_date":s_q.published_date
+                }]
+        return JsonResponse(post_list)
+    return HttpResponse("Unsupported HTTP Method")
