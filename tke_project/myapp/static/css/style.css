@@ -632,5 +632,23 @@ hr.break_line:after {
 
 /* contact us*/
 .contact_column {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.contact_photo{ 
+  width: 250px;
+  height: 250px;
+  margin-left: 30px;
+  margin-right: 30px;
+  border: 2px solid #C50015;
+  transition: transform .5s ease;
+}
+.contact_photo:hover{
+  transform: scale(1.1);
+}
+.contact_column p {
+  text-align: center;
+  font-size: 15px;
+}
+
