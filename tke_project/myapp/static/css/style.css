@@ -603,13 +603,6 @@ hr.break_line:after {
 /* /Log in */
 
 /* contact us*/
-.contact_row {
-  display: flex;
-}
-
 .contact_column {
-  height: 120px;
-  width: 120px;
-  flex: 33.33%;
-  padding: 5px;
+  text-align: center;
 }
