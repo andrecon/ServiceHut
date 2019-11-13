@@ -19,13 +19,7 @@ from .models import Event
 from .forms import EventForm 
 from .forms import GalleryForm
 
-
-# def index(request):
-#     context = {
-#         "variable":"App",
-#         "title":"TKE",
-#     }
-#     return render(request, "sections/philanthropy.html", context=context)
+import dateutil.parser
 
 # A page representing a list of objects.
 class EventView(ListView):
@@ -50,30 +44,23 @@ class CreateEventView(CreateView):
 
 
 def index(request):
-    if request.method == "POST":
-        if request.user.is_authenticated:
-            form_instance = forms.EventForm(request.POST)
-            if form_instance.is_valid():
-                new_event = models.Event(title=form_instance.cleaned_data["title"])
-                new_event.author = request.user
-                new_event.save()
-                form_instance = forms.EventForm()
-        else:
-            form_instance = forms.EventForm()
-    else:
-        form_instance = forms.EventForm()
+    form_instance = forms.EventForm()
     event_query = models.Event.objects.all()
     post_list = {"events":[]}
+
     for s_q in event_query:
+        date_only = s_q.published_date.strftime("%Y-%M-%d")
         post_list["events"] += [{
             "id":s_q.id,
             "title":s_q.title,
             "post_author":s_q.post_author.username,
+            "published_date":date_only,
             "created_date":s_q.created_date,
             "description":s_q.description,
             "max_volunteers":s_q.max_volunteers,
             "cover":s_q.cover,
-            "status": s_q.status
+            "status": s_q.status,
+            "current_volunteers": s_q.current_volunteers
             }]
     context = {
         "variable":"Hello World",
@@ -81,8 +68,6 @@ def index(request):
         "form":form_instance,
         "some_list":post_list["events"]
     }
-    for atr in post_list["events"]:
-        print(atr["title"])
     return render(request, "sections/philanthropy.html", context=context)
 
 
@@ -98,6 +83,7 @@ def posts_view(request):
             url = ""
             if not str(s_q.cover)=="":
                 url=s_q.cover.url
+            date_only = s_q.published_date.strftime("%Y-%M-%d")
             post_list["events"] += [{
                 "title":s_q.title,
                 "post_author":s_q.post_author.username,
@@ -106,7 +92,8 @@ def posts_view(request):
                 "max_volunteers":s_q.max_volunteers,
                 "cover":url,
                 "status":s_q.status,
-                "published_date":s_q.published_date
+                "published_date":date_only,
+                "current_volunteers": s_q.current_volunteers
                 }]
         return JsonResponse(post_list)
     return HttpResponse("Unsupported HTTP Method")

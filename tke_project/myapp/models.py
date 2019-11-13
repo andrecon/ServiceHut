@@ -4,8 +4,6 @@ from datetime import datetime
 from django.contrib.auth.models import User
 
 # Create your models here.
-# class UserProfile(models.Model):
-#     username = models.CharField(max_length=42)
 
 class Event(models.Model):
     title = models.TextField()
