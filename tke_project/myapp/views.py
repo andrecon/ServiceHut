@@ -67,7 +67,7 @@ def contact(request):
     return render(request, "sections/contact.html")
 
 def chat(request):
-    return render(request,"sections/chat.html")
+    return render(request,"sections/chat.html", {})
 
 def room(request, room_name):
     return render(request, 'sections/room.html', {

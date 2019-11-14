@@ -26,5 +26,5 @@ urlpatterns = [
 		path('contact/', views.contact, name='contact'),
 		path('aboutUs/', about.index, name="about"),
 		path('chat/', views.chat, name="chat"),
-		path('<str:room_name>/', views.room, name="room"),
+        path('chat/<str:room_name>/', views.room, name='room'),
 ]

@@ -2,6 +2,11 @@
 version: '3'
 
 services:
+  redis:
+    image: redis
+#    container_name: cache
+    expose:
+       - 6379
   web:
     build: .
     volumes:
@@ -11,9 +16,3 @@ services:
     command: python /code/tke_project/manage.py runserver 0.0.0.0:8080
     links:
        - redis
-
-  redis:
-    image: redis
-    container_name: cache
-    expose:
-       - 6379
