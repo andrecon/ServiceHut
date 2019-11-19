@@ -26,10 +26,18 @@
     margin: 0 auto;
 }
 
+#description-info{
+    width: 700px;
+    margin: 0 auto;
+}
+
+#description-info p{
+   text-align: center;
+}
+
 #history-info p{
     text-align: center;
 }
-
 
 .column {
     float: left;
