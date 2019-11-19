@@ -53,7 +53,6 @@
               duration: 1000,
               easing:'linear',
               step: function() {
-                console.log(this.countNum);
                 $this.text(Math.floor(this.countNum));
               },
               complete: function() {
