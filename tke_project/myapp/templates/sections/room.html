@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block head %}
+<link rel="stylesheet" href="/tke_project/myapp/static/css/style.css">
 {% endblock %}
 
 {% block header %}
@@ -13,15 +14,13 @@
     <title>Chat Room</title>
 </head>
 <body>
-    <div class="container">
-            <textarea id="chat-log" cols="100" rows="20" disabled="disabled"></textarea>
-    </div>
-    <!-- <textarea id="chat-log" cols="100" rows="20"></textarea><br/> -->
+    <textarea class="chat-log" id="chat-log" cols="100" rows="20" disabled="disabled"></textarea>
     <input id="chat-message-input" type="text" size="100"/><br/>
-    <input id="chat-message-submit" type="button" value="Send"/>
+    <input class= "button" id="chat-message-submit" type="button" value="Send"/>
 </body>
 <script>
     var roomName = {{ room_name_json }};
+    var user = {{ username }};
 
     var chatSocket = new WebSocket(
         'ws://' + window.location.host +
@@ -46,7 +45,14 @@
 
     document.querySelector('#chat-message-submit').onclick = function(e) {
         var messageInputDom = document.querySelector('#chat-message-input');
-        var message = messageInputDom.value;
+        if (user)
+        {
+            var message = user + ": " + messageInputDom.value;
+        }
+        else 
+        {
+            var message = "Guest: " + messageInputDom.value;
+        }
         chatSocket.send(JSON.stringify({
             'message': message
         }));

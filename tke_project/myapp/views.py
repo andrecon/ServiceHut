@@ -3,6 +3,7 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from .models import Gallery
 from django.utils.safestring import mark_safe
+from django.contrib.auth.models import User
 import json
 # Create your views here.
 from django.http import HttpResponse
@@ -67,9 +68,11 @@ def contact(request):
     return render(request, "sections/contact.html")
 
 def chat(request):
+    
     return render(request,"sections/chat.html", {})
 
 def room(request, room_name):
-    return render(request, 'sections/room.html', {
-        'room_name_json': mark_safe(json.dumps(room_name))
+    return render(request,'sections/room.html',{
+        'room_name_json': mark_safe(json.dumps(room_name)),
+        'username': mark_safe(json.dumps(request.user.username))
     })
