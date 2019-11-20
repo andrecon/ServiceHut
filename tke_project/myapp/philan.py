@@ -32,6 +32,7 @@ class CreateEventView(CreateView):
     template_name = 'sections/post.html'
     success_url = reverse_lazy('philanthropy')
 
+    
     # template_name = 'sections/post.html'
     # model = Event
     # success_url = reverse_lazy('philanthropy')
@@ -41,6 +42,21 @@ class CreateEventView(CreateView):
     #     form = super().get_form(form_class)
     #     form.request = self.request
     #     return form
+
+# def post_data(request):
+#     if request.method == "POST":
+#         form_instance = forms.EventForm(request.POST)
+#         if form_instance.is_valid():
+#             print(request.POST)
+#             # message = escape(form_instance.cleaned_data['suggestion_field'])
+#             new_post = models.Event()
+#             new_post.cover = form_instance.cleaned_data[]
+
+#             # new_sugg = models.Suggestion()
+#             # new_sugg.suggestion_field = form_instance.cleaned_data["suggestion_field"]
+#             # new_sugg.suggestion_author = request.user
+#             # new_sugg.save()
+#             # form_instance = forms.SuggestionForm()
 
 
 def index(request):
