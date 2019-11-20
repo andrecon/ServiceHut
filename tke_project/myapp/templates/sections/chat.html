@@ -1,3 +1,12 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="/tke_project/myapp/static/css/style.css">
+{% endblock %}
+
+{% block header %}
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,9 +14,9 @@
     <title>Chat Rooms</title>
 </head>
 <body>
-    What chat room would you like to enter?<br/>
+    Please Login to chat or Join an existing chatroom as guest!<br/>
     <input id="room-name-input" type="text" size="100"/><br/>
-    <input id="room-name-submit" type="button" value="Enter"/>
+    <input class = "button" id="room-name-submit" type="button" value="Enter"/>
 
     <script>
         document.querySelector('#room-name-input').focus();
@@ -24,3 +33,9 @@
     </script>
 </body>
 </html>
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

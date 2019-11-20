@@ -65,7 +65,10 @@ def logout_view(request):
     return redirect("/login/")
 
 def contact(request):
-    return render(request, "sections/contact.html")
+    context = {
+        "username": str(request.user.username)
+    }
+    return render(request, "sections/contact.html",context=context)
 
 def chat(request):
     
