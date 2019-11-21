@@ -1,6 +1,6 @@
 from django.db import models
 from datetime import datetime
-
+from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.auth.models import User
 
 # Create your models here.
@@ -27,3 +27,28 @@ class Gallery(models.Model):
 
     def __str__(self):
         return self.title
+
+class RUSH(models.Model):
+    FRESHMAN = 'FR'
+    SOPHOMORE = 'SO'
+    JUNIOR = 'JR'
+    SENIOR = 'SR'
+    YEAR_IN_SCHOOL_CHOICES = [
+        (FRESHMAN, 'Freshman'),
+        (SOPHOMORE, 'Sophomore'),
+        (JUNIOR, 'Junior'),
+        (SENIOR, 'Senior'),
+    ]
+    name = models.CharField(max_length=100)
+    lastName = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
+    phone_number = PhoneNumberField(default='+1')
+    year = models.CharField(
+        max_length=2,
+        choices=YEAR_IN_SCHOOL_CHOICES,
+        default=FRESHMAN,
+    )
+    whyTke = models.TextField()
+
+    def __str__(self):
+        return self.name

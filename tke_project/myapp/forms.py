@@ -2,6 +2,7 @@ from django import forms
 from .models import Event
 from .models import Gallery
 from datetime import date
+from .models import RUSH
 
 from django.core.validators import validate_slug
 from django.contrib.auth.forms import UserCreationForm
@@ -71,3 +72,9 @@ class RegistrationForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+class RushTke(forms.ModelForm):
+    class Meta:
+        model = RUSH
+        fields = ['name', 'lastName', 'email','phone_number' ,'year', 'whyTke']
