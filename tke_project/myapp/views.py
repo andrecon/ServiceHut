@@ -85,10 +85,13 @@ def rush(request):
         form_instance = forms.RushTke(request.POST)
         if form_instance.is_valid():
             form_instance.save()
-            return redirect('/')
+            return redirect('/thanks')
     else:
         form_instance = forms.RushTke()
     context = {
         "form":form_instance,
     }
     return render(request, "sections/rush.html", context=context)
+
+def thanks(request):
+    return render(request,"sections/thanks.html", {})
