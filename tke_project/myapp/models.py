@@ -16,7 +16,8 @@ class Event(models.Model):
 
     status = models.BooleanField(default=True)
 
-    post_author = models.ForeignKey(User, default=1, on_delete=models.CASCADE)
+    # post_author = models.ForeignKey(User, default=1, on_delete=models.CASCADE)
+    post_author = models.CharField(max_length=500)
 
     def __str__(self):
         return self.title

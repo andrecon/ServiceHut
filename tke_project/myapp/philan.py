@@ -33,46 +33,33 @@ class CreateEventView(CreateView):
     template_name = 'sections/post.html'
     success_url = reverse_lazy('philanthropy')
 
-    
-    # template_name = 'sections/post.html'
-    # model = Event
-    # success_url = reverse_lazy('philanthropy')
-    # form_class = EventForm
 
-    # def get_form(self, form_class=None):
-    #     form = super().get_form(form_class)
-    #     form.request = self.request
-    #     return form
 
-def post_data(request):
-    print(request.method)
-    if request.method == "POST":
-        form_instance = forms.EventForm(request.POST)
-        print(form_instance)
-        if form_instance.is_valid():
-            print(request.POST)
-            # message = escape(form_instance.cleaned_data['suggestion_field'])
-            new_post = models.Event()
-            new_post.title = form_instance.cleaned_data['title']
-            new_post.description = form_instance.cleaned_data['description']
-            new_post.cover = form_instance.cleaned_data['id_cover']
-            new_post.created_date = form_instance.cleaned_data['created_date']
-            new_post.max_volunteers = form_instance.cleaned_data['number']
-            new_post.post_author =  request.user.username
-            new_post.save()
-            form_instance = forms.EventForm()
-    else:
-        form_instance = forms.EventForm()
+# def post_data(request):
+#     if request.method == "POST":
+#         form_instance = forms.EventForm(request.POST)
+#         if form_instance.is_valid():
+#             # form_instance.save()
+#             new_post = models.Event()
+#             new_post.title = form_instance.cleaned_data["title"]
+#             new_post.description = form_instance.cleaned_data['description']
+#             new_post.cover = form_instance.cleaned_data['id_cover']
+#             new_post.created_date = form_instance.cleaned_data['created_date']
+#             new_post.max_volunteers = form_instance.cleaned_data['number']
+            
+#             new_post.post_author =  str(request.user.username)
+#             new_post.save()
+#             form_instance = forms.EventForm()
+#             return redirect('/philanthropy')
+#         else:
+#             print("nope")
+#     else:
+#         form_instance = forms.EventForm()
+#     context = {
+#         "form":form_instance,
+#     }
+#     return render(request, "sections/post.html", context=context)
 
-            # new_sugg = models.Suggestion()
-            # new_sugg.suggestion_field = form_instance.cleaned_data["suggestion_field"]
-            # new_sugg.suggestion_author = request.user
-            # new_sugg.save()
-            # form_instance = forms.SuggestionForm()s
-    context = {
-        "form": form_instance
-    }
-    return render(request, "sections/post.html", context=context)
 
 
 def index(request):
@@ -85,7 +72,7 @@ def index(request):
         post_list["events"] += [{
             "id":s_q.id,
             "title":s_q.title,
-            "post_author":s_q.post_author.username,
+            "post_author":s_q.post_author,
             "published_date":date_only,
             "created_date":s_q.created_date,
             "description":s_q.description,
@@ -118,7 +105,7 @@ def posts_view(request):
             date_only = s_q.published_date.strftime("%Y-%M-%d")
             post_list["events"] += [{
                 "title":s_q.title,
-                "post_author":s_q.post_author.username,
+                "post_author":s_q.post_author,
                 "created_date":s_q.created_date,
                 "description":s_q.description,
                 "max_volunteers":s_q.max_volunteers,
