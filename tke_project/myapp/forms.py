@@ -7,13 +7,13 @@ from django.core.validators import validate_slug
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-class EventForm(forms.ModelForm):
-    # title = forms.CharField(label='Title', max_length=240, validators=[validate_slug])
-    # description = forms.CharField(label='Description', max_length=240)
-    # created_date = forms.DateField(label='Created Date')
-    # max_volunteers = forms.IntegerField(label='Max Volunteers')
-    # status = forms.BooleanField(label='Status', initial=True)
-    # cover = forms.ImageField(label="Image Cover")
+class EventForm(forms.Form):
+    title = forms.CharField(label='Title', max_length=240, validators=[validate_slug])
+    description = forms.CharField(label='Description', max_length=240)
+    created_date = forms.DateField(label='Created Date')
+    max_volunteers = forms.IntegerField(label='Max Volunteers')
+    status = forms.BooleanField(label='Status', initial=True)
+    cover = forms.ImageField(label="Image Cover")
     
     # def save(self, request, commit=True):
     #     new_event = models.Event (
@@ -34,9 +34,9 @@ class EventForm(forms.ModelForm):
     #         self.save_m2m()
     #     return new_event
 
-    class Meta:
-        model = Event
-        fields = ['title', 'description', 'created_date', 'max_volunteers', 'status', 'cover']
+    # class Meta:
+    #     model = Event
+    #     fields = ['title', 'description', 'created_date', 'max_volunteers', 'status', 'cover']
 
     # def save(self, commit=True):
     #      event = super().save(commit=False)

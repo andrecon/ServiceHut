@@ -9,11 +9,10 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
 		path('', views.GalleryView.as_view(), name='index'),
-		#path('philanthropy/', philan.index),
-		
-		#path('philanthropy/', philan.EventView.as_view(), name='philanthropy'),
+
 		path('philanthropy/', philan.index, name='philanthropy'),
-		path('post/', philan.CreateEventView.as_view()),
+		# path('post/', philan.CreateEventView.as_view()),
+		path('post/', philan.post_data),
 		path('postdata/', philan.posts_view),
 		#path('post/', views.philanPost),
 

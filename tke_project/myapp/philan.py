@@ -12,6 +12,7 @@ from django.views.generic import ListView, CreateView
 
 #Handle the redirect back to our homepage 
 from django.urls import reverse_lazy 
+from django.contrib.auth.models import User
 
 from . import forms
 from . import models
@@ -43,20 +44,35 @@ class CreateEventView(CreateView):
     #     form.request = self.request
     #     return form
 
-# def post_data(request):
-#     if request.method == "POST":
-#         form_instance = forms.EventForm(request.POST)
-#         if form_instance.is_valid():
-#             print(request.POST)
-#             # message = escape(form_instance.cleaned_data['suggestion_field'])
-#             new_post = models.Event()
-#             new_post.cover = form_instance.cleaned_data[]
+def post_data(request):
+    print(request.method)
+    if request.method == "POST":
+        form_instance = forms.EventForm(request.POST)
+        print(form_instance)
+        if form_instance.is_valid():
+            print(request.POST)
+            # message = escape(form_instance.cleaned_data['suggestion_field'])
+            new_post = models.Event()
+            new_post.title = form_instance.cleaned_data['title']
+            new_post.description = form_instance.cleaned_data['description']
+            new_post.cover = form_instance.cleaned_data['id_cover']
+            new_post.created_date = form_instance.cleaned_data['created_date']
+            new_post.max_volunteers = form_instance.cleaned_data['number']
+            new_post.post_author =  request.user.username
+            new_post.save()
+            form_instance = forms.EventForm()
+    else:
+        form_instance = forms.EventForm()
 
-#             # new_sugg = models.Suggestion()
-#             # new_sugg.suggestion_field = form_instance.cleaned_data["suggestion_field"]
-#             # new_sugg.suggestion_author = request.user
-#             # new_sugg.save()
-#             # form_instance = forms.SuggestionForm()
+            # new_sugg = models.Suggestion()
+            # new_sugg.suggestion_field = form_instance.cleaned_data["suggestion_field"]
+            # new_sugg.suggestion_author = request.user
+            # new_sugg.save()
+            # form_instance = forms.SuggestionForm()s
+    context = {
+        "form": form_instance
+    }
+    return render(request, "sections/post.html", context=context)
 
 
 def index(request):
