@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}<title>RUSH TKE</title>{% endblock %}
+{% block content %}
+<div class="grid-x grid-padding-x">
+  <div class="large-4 medium-4 small-12 large-offset-4 medium-offset-4 cell">
+
+    <form action="/rush/" method="post">
+        {% csrf_token %}
+        <h4 class="text-center">Ready to Rush?</h4>
+        <label for="name">Name: </label>
+        {{ form.name }}
+        <label for="lastName">Last Name: </label>
+        {{ form.lastName }}
+        <label for="Email">Email: </label>
+        {{ form.email }}
+        <label for="phoneNumber"> Phone Number:</label>
+        {{ form.phone_number}}
+        <label for="year">Year: </label>
+        {{ form.year }}
+        <label for="whyTKE"> Why TKE?</label>
+        {{ form.whyTke}}
+        <input type="submit" class="button expanded" value="RUSH" />
+    </form>
+  </div>
+</div>
+{% endblock %}

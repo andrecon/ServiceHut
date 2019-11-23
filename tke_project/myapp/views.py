@@ -79,3 +79,19 @@ def room(request, room_name):
         'room_name_json': mark_safe(json.dumps(room_name)),
         'username': mark_safe(json.dumps(request.user.username))
     })
+
+def rush(request):
+    if request.method == "POST":
+        form_instance = forms.RushTke(request.POST)
+        if form_instance.is_valid():
+            form_instance.save()
+            return redirect('/thanks')
+    else:
+        form_instance = forms.RushTke()
+    context = {
+        "form":form_instance,
+    }
+    return render(request, "sections/rush.html", context=context)
+
+def thanks(request):
+    return render(request,"sections/thanks.html", {})

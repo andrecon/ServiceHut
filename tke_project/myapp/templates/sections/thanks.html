@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}<title>RUSH TKE</title>{% endblock %}
+{% block content %}
+<div class="grid-x grid-padding-x">
+  <div class="large-4 medium-4 small-12 large-offset-4 medium-offset-4 cell">
+    <p>Thank you for considering TKE, we will contact you shortly!</p>
+    <button class="button" id="anotherForm">Submit another form?</button>
+    <button class="button" id="home">Home</button>
+  </div>
+</div>
+<script type="text/javascript">
+    document.getElementById("anotherForm").onclick = function () {
+        location.href = "/rush/";
+    };
+    document.getElementById("home").onclick = function () {
+        location.href = "/";
+    };
+</script>
+{% endblock %}

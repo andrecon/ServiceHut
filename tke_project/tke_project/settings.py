@@ -39,8 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myapp',
     'channels',
+    'phonenumber_field',
 ]
 ASGI_APPLICATION = 'myapp.routingApp.application'
+PHONENUMBER_DB_FORMAT ='RFC3966'
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
