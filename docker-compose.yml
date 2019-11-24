@@ -12,7 +12,7 @@ services:
     volumes:
        - .:/code
     ports:
-       - 8080:8080
+       - 80:8080
     command: python /code/tke_project/manage.py runserver 0.0.0.0:8080
     links:
        - redis
