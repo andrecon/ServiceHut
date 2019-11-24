@@ -4,15 +4,26 @@ version: '3'
 services:
   redis:
     image: redis
-#    container_name: cache
     expose:
        - 6379
   web:
     build: .
     volumes:
        - .:/code
-    ports:
-       - 8080:8080
+    expose:
+       - 8080
     command: python /code/tke_project/manage.py runserver 0.0.0.0:8080
     links:
        - redis
+  nginx:
+    restart: always
+    build: ./nginx/
+    depends_on:
+      - web
+    ports:
+      - "80:80"
+    #  - "443:443"
+#     volumes:
+#        - ./mysite/myapp/static:/static
+    links:
+      - web:web

@@ -25,7 +25,7 @@ SECRET_KEY = ')o&bo@)7#ejddm%ek=6mgy@yzkm7bh%o-u$mcw7gx#br8f70@!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['35.230.70.192','localhost']
 
 
 # Application definition
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 ]
 ASGI_APPLICATION = 'myapp.routingApp.application'
 PHONENUMBER_DB_FORMAT ='RFC3966'
+
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
