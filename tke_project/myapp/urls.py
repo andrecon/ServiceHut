@@ -2,6 +2,7 @@ from django.urls import path, include
 from . import views
 from . import philan
 from . import about
+from . import account
 
 from django.contrib.auth import views as auth_views
 
@@ -16,6 +17,9 @@ urlpatterns = [
 
 		path('postdata/', philan.posts_view),
 		path('post/', philan.CreateEventView.as_view()),
+
+		# path('account/', account.index),
+		path('account/', account.EventView.as_view(), name='account'),
 		
 
 

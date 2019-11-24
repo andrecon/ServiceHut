@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+{% endblock %}
+
+{% block header %}
+
+<header>
+	<div class="container">
+		<div class="profile">
+			<div class="profile-image">
+				<img src="../../../media/photos/fonzi .jpg" alt="">
+			</div>
+			<div class="profile-user-settings">
+				<h1 class="profile-user-name">{{user.username}}</h1>
+			</div>
+			<div class="profile-bio">
+				<p><span class="profile-real-name">{{user.email}} : </span> This will be their bio</p>
+			</div>
+		</div>
+		<!-- End of profile section -->
+	</div>
+	<!-- End of container -->
+</header>
+
+<main>
+
+	<div class="container">
+		<div class="gallery">
+            {% for post in object_list %}
+			<div class="gallery-item" tabindex="0">
+				<img src="{{ post.cover.url}}" class="gallery-image" alt="{{ post.title }}">
+				<div class="gallery-item-type">
+					<span class="visually-hidden">Video</span><i class="fas fa-video" aria-hidden="true"></i>
+				</div>
+				<div class="gallery-item-info">
+					<ul>
+						<li class="gallery-item-likes"><span class="visually-hidden">Volunteers :</span><i class="fas fa-heart" aria-hidden="true"></i> {{post.max_volunteers}}</li>
+					</ul>
+				</div>
+            </div>
+            {% endfor %}
+		</div>
+		<!-- End of gallery -->
+
+        <div class="loader"></div>
+        <br>
+
+	</div>
+	<!-- End of container -->
+
+</main>
+
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!-- development version, includes helpful console warnings -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="{% static "js/myvue.js" %}"></script>
+<link rel="stylesheet" href="{% static "css/account.css" %}">
+{% endblock %}
