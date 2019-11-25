@@ -1,6 +1,7 @@
 from django.urls import path, include
 from . import views
 from . import philan
+from . import volunteer
 from . import about
 from . import account
 
@@ -20,6 +21,8 @@ urlpatterns = [
 
 		# path('account/', account.index),
 		path('account/', account.EventView.as_view(), name='account'),
+
+		path('volunteer/', volunteer.CreateVolunteerView.as_view()),
 		
 
 

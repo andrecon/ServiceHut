@@ -22,6 +22,20 @@ class Event(models.Model):
     def __str__(self):
         return self.title
 
+class Volunteer(models.Model):
+    email = models.CharField(max_length=100)
+    phone_number = PhoneNumberField(default='+1')
+
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.email
+
+    class Meta:
+        ordering = ['email', 'phone_number']
+
+
+
 class Gallery(models.Model):
     title = models.TextField()
     Image = models.ImageField(upload_to='photos/')

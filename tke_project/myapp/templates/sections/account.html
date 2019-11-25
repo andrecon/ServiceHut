@@ -29,17 +29,17 @@
 	<div class="container">
 		<div class="gallery">
             {% for post in object_list %}
-			<div class="gallery-item" tabindex="0">
-				<img src="{{ post.cover.url}}" class="gallery-image" alt="{{ post.title }}">
-				<div class="gallery-item-type">
-					<span class="visually-hidden">Video</span><i class="fas fa-video" aria-hidden="true"></i>
-				</div>
-				<div class="gallery-item-info">
-					<ul>
-						<li class="gallery-item-likes"><span class="visually-hidden">Volunteers :</span><i class="fas fa-heart" aria-hidden="true"></i> {{post.max_volunteers}}</li>
-					</ul>
-				</div>
-            </div>
+                {% if post.post_author == user.username %}
+                <div class="gallery-item" tabindex="0">
+                        <img src="{{ post.cover.url}}" class="gallery-image" alt="{{ post.title }}">
+                        <div class="gallery-item-info">
+                            <ul>
+                                <li class="gallery-item-likes"><span class="visually-hidden">Volunteers :</span><i class="fa fa-child" aria-hidden="true"></i> {{post.max_volunteers}}</li>
+                            </ul>
+                        </div>
+                </div>
+                {% else %}
+                {% endif %}
             {% endfor %}
 		</div>
 		<!-- End of gallery -->
@@ -61,4 +61,5 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="{% static "js/myvue.js" %}"></script>
 <link rel="stylesheet" href="{% static "css/account.css" %}">
+<!-- <script src="https://kit.fontawesome.com/878f6071f2.js" crossorigin="anonymous"></script> -->
 {% endblock %}

@@ -38,7 +38,11 @@
     Greek Week 2018
     </h3>
     <br>
-    <a id="photo-submit-button" href="/photoPost">Add to container</a> </div>
+    {% if user.is_superuser %}
+    <a id="photo-submit-button" href="/photoPost">Add to container</a> 
+    {% else %}
+    {% endif %}
+  </div>
   <section id="photos"> {% for post in object_list %} <img src="{{ post.Image.url}}"> {% endfor %} </section>
 </div>
 <script src="../static/js/home.js"></script> 

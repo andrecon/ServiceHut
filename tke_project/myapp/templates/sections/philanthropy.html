@@ -52,13 +52,13 @@
                 <h5>{{ post.title }}</h5>
                 <p>{{post.description}}</p>
                 <p>{{post.published_date}}</p>
-                <p>Author: {{post.post_author}}</p>
+                <p>Posted By: {{post.post_author}}</p>
                 <div class="event-container">
                         <img class="thumbnail" src="{{ post.cover.url}}" alt="{{ post.title }}" >
-                        <div class="event-bottom-left">{{post.current_volunteers}}/{{post.max_volunteers}}</div>
-                        <div class="event-bottom-right">{{post.status}}</div>
+                        <div class="event-bottom-left">Currrent Volunteers: {{post.current_volunteers}}/{{post.max_volunteers}}</div>
+                        <!-- <div class="event-bottom-right">{{post.status}}</div> -->
                 </div>
-                <a href="#" class="button expanded">Sign Up</a>
+                <a href="/volunteer" class="button expanded">Sign Up</a>
         </div>
         {% endfor %}
 </div>

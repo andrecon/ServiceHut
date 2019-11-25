@@ -51,6 +51,12 @@
                       <a href="{% url 'logout' %}" class="hvr-underline-from-center">Log Out</a>
                   </li>
                   {% endif %}
+                  {% if user.is_superuser %}
+                  <li>
+                    <a href="/admin" class="hvr-underline-from-center"> Admin Page</a>
+                  </li>
+                  {% else %}
+                  {% endif %}
               </ul>
           </div>
       </div>

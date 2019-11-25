@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="../../static/css/foundation-datepicker.min.css">
+{% endblock %}
+
+{% block header %}
+
+<!-- <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.errors }}
+    {{ form.non_field_errors }}
+    <div class="row">
+        <div class="large-12 columns">
+            <label>Title
+                <input name="title" required="" id="id_title" type="text" placeholder="Title" />
+            </label>
+        </div>
+    </div>
+    <div class="row">
+          <div class="large-12 columns">
+            <label>Description
+              <textarea name="description" required="" id="id_description" placeholder="Description"></textarea>
+            </label>
+          </div>
+    </div>
+    <p><label for="id_cover">Image Cover</label> <input type="file" name="cover" accept="image/*" required="" id="id_cover"></p>
+    <p>
+      <label for="id_created_date">Event Date (YYYY-MM-DD)</label> 
+      <input type="text" class="span2" required="" name="created_date" id="id_created_date">
+    </p>
+    <div class="small-12 medium-6 columns">
+      <label>
+          Number of Volunteers
+          <input type="number" name="max_volunteers" value="1" required="" >
+      </label>
+    </div>
+    <p hidden>
+      <label for="id_status">Status:</label> <input type="checkbox" name="status" id="id_status" checked="">
+    </p>
+    <input type="hidden" name="post_author" id="id_post_author"  value={{user.first_name}} placeholder={{user.username}}>
+    <button type="submit" class="alert button">Submit New Post</button>
+</form> -->
+
+<form action="/signup/" method="post">
+    {% csrf_token %}
+    {{ form.errors }}
+    {{ form.email.label_tag }}
+    {{ form.email }}
+    {{ form.phone_number.label_tag }}
+    {{ form.phone_number }}
+    <input type="submit" class="button expanded" value="Register" />
+</form>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="../../static/js/eventForm.js"></script>
+<script src="../../static/js/foundation-datepicker.js"></script>
+{% endblock %}

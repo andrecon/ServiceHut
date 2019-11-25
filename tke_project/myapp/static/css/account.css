@@ -197,7 +197,7 @@ img {
     object-fit: cover;
 }
 
-/* Loader */
+/* Loader
 
 .loader {
     width: 5rem;
@@ -207,9 +207,17 @@ img {
     border-radius: 50%;
     margin: 0 auto;
     animation: loader 500ms linear infinite;
-}
+} */
 
-/* Media Query */
+/* Spinner Animation */
+/* 
+@keyframes loader {
+    to {
+        transform: rotate(360deg);
+    }
+} */
+
+
 
 @media screen and (max-width: 40rem) {
     .profile {
@@ -288,14 +296,6 @@ img {
 
     .profile-stat-count {
         display: block;
-    }
-}
-
-/* Spinner Animation */
-
-@keyframes loader {
-    to {
-        transform: rotate(360deg);
     }
 }
 
