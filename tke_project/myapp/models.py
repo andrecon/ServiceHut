@@ -13,12 +13,12 @@ class Event(models.Model):
     max_volunteers = models.IntegerField(default=1)
     current_volunteers = models.IntegerField(default=1)
     cover = models.ImageField(upload_to='event_images/')
-
     status = models.BooleanField(default=True)
-
     # post_author = models.ForeignKey(User, default=1, on_delete=models.CASCADE)
     post_author = models.CharField(max_length=500)
-
+    address = models.CharField(max_length=500)
+    city = models.CharField(max_length=500)
+    state = models.CharField(max_length=500)
     def __str__(self):
         return self.title
 

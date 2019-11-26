@@ -79,7 +79,10 @@ def index(request):
             "max_volunteers":s_q.max_volunteers,
             "cover":s_q.cover,
             "status": s_q.status,
-            "current_volunteers": s_q.current_volunteers
+            "current_volunteers": s_q.current_volunteers,
+            "address": s_q.address,
+            "city": s_q.city,
+            "state": s_q.state
             }]
     context = {
         "variable":"Hello World",

@@ -12,7 +12,7 @@ from django.contrib.auth.models import User
 class EventForm(forms.ModelForm):
     class Meta:
         model = Event
-        fields = ['title', 'description', 'created_date', 'max_volunteers', 'status', 'cover', 'post_author']
+        fields = ['title', 'description', 'created_date', 'max_volunteers', 'status', 'cover', 'post_author', 'address', 'city', 'state']
     
 class VolunteerForm(forms.ModelForm):
     class Meta:
