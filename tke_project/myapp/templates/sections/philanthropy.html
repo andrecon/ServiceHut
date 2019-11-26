@@ -6,6 +6,96 @@
 
 {% block header %}
 
+<style>
+                body {font-family: Arial, Helvetica, sans-serif;}
+                
+                #myImg {
+                  border-radius: 5px;
+                  cursor: pointer;
+                  transition: 0.3s;
+                }
+                
+                #myImg:hover {opacity: 0.7;}
+                
+                /* The Modal (background) */
+                .modal {
+                  display: none; /* Hidden by default */
+                  position: fixed; /* Stay in place */
+                  z-index: 1; /* Sit on top */
+                  padding-top: 100px; /* Location of the box */
+                  left: 0;
+                  top: 0;
+                  width: 100%; /* Full width */
+                  height: 100%; /* Full height */
+                  overflow: auto; /* Enable scroll if needed */
+                  background-color: rgb(0,0,0); /* Fallback color */
+                  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+                }
+                
+                /* Modal Content (image) */
+                .modal-content {
+                  margin: auto;
+                  display: block;
+                  width: 80%;
+                  max-width: 700px;
+                }
+                
+                /* Caption of Modal Image */
+                #caption {
+                  margin: auto;
+                  display: block;
+                  width: 80%;
+                  max-width: 700px;
+                  text-align: center;
+                  color: #ccc;
+                  padding: 10px 0;
+                  height: 150px;
+                }
+                
+                /* Add Animation */
+                .modal-content, #caption {  
+                  -webkit-animation-name: zoom;
+                  -webkit-animation-duration: 0.6s;
+                  animation-name: zoom;
+                  animation-duration: 0.6s;
+                }
+                
+                @-webkit-keyframes zoom {
+                  from {-webkit-transform:scale(0)} 
+                  to {-webkit-transform:scale(1)}
+                }
+                
+                @keyframes zoom {
+                  from {transform:scale(0)} 
+                  to {transform:scale(1)}
+                }
+                
+                /* The Close Button */
+                .close {
+                  position: absolute;
+                  top: 15px;
+                  right: 35px;
+                  color: #f1f1f1;
+                  font-size: 40px;
+                  font-weight: bold;
+                  transition: 0.3s;
+                }
+                
+                .close:hover,
+                .close:focus {
+                  color: #bbb;
+                  text-decoration: none;
+                  cursor: pointer;
+                }
+                
+                /* 100% Image Width on Smaller Screens */
+                @media only screen and (max-width: 700px){
+                  .modal-content {
+                    width: 100%;
+                  }
+                }
+                </style>
+
 <h4 id="event-title" align="text-center">Upcoming Events</h4>
 
 <hr>
@@ -15,36 +105,6 @@
         </div>
 </div>
 
-<!-- <div class="grid-x grid-margin-x small-up-2 medium-up-2 large-up-4">
-        <div id="app-4"> 
-                <span v-if="unseen">
-                <div v-for="post in postdata">
-                        {% verbatim %}
-                        <div class="table">
-                                <div class="row">
-                                        <h5>{{post.title}}</h5>
-                                        <p>{{post.description}}</p>
-                                        <p>Plublished : {{post.created_date}} </p>
-                                        <p>Event Date: {{post.published_date}}</p>
-                                        <div class="event-container">
-                                                <img class="thumbnail" v-bind:src="post.cover" v-bind:alt="post.title">
-                                                <div class="event-bottom-left">{{post.current_volunteers}}/{{post.max_volunteers}}</div>
-                                                <div v-if="!post.status" class="event-bottom-right">
-                                                        Closed 
-                                                </div>
-                                                <div v-else class="event-bottom-right">
-                                                        Open 
-                                                </div>
-                                        </div>
-                                        <p>Author: {{post.post_author}}</p>
-                                        <a href="#" class="button expanded">Sign Up</a>
-                                </div>
-                        </div>
-                        </div>
-                        {% endverbatim %}
-                </span>
-        </div>  
-</div> -->
 <div class="grid-x grid-margin-x small-up-2 medium-up-2 large-up-4">
         <!-- While this view is executing, self.object_list will contain the list of objects that the view is operating upon.-->
         {% for post in object_list %}
@@ -55,7 +115,7 @@
                 <p>Posted By: {{post.post_author}}</p>
                 <a href="https://maps.google.com/?q={{post.address}},{{post.city}},{{post.state}}">location: {{post.city}}, {{post.state}}</a>
                 <div class="event-container">
-                        <img class="thumbnail" src="{{ post.cover.url}}" alt="{{ post.title }}" style="height: 400px; width: 400px;" >
+                        <img id= "myImg" class="thumbnail" src="{{ post.cover.url}}" alt="{{ post.title }}" style="height: 400px; width: 400px; overflow: hidden;" >
                         <div class="event-bottom-left">Currrent Volunteers: {{post.current_volunteers}}/{{post.max_volunteers}}</div>
                         <!-- <div class="event-bottom-right">{{post.status}}</div> -->
                 </div>
@@ -64,28 +124,34 @@
         {% endfor %}
 </div>
 
- <!-- <div class="grid-x grid-margin-x small-up-2 medium-up-2 large-up-4">
-        {% for post in object_list %}
-        <div class="cell">
-                <h5>{{ post.title }}</h5>
-                <p>{{post.description}}</p>
-                <p>Plublished : {{post.published_date}}</p>
-                <p>Event Date: {{post.created_date}}</p>
-                <div class="event-container">
-                        <img class="thumbnail" src="{{ post.cover.url}}" alt="{{ post.title }}">
-                        <div class="event-bottom-left">{{post.current_volunteers}}/{{post.max_volunteers}}</div>
-                        <div class="event-bottom-right">
-                                {% if post.status is False %}
-                                        Closed 
-                                {% else %} 
-                                        Open 
-                                {% endif %}</div>
-                </div>
-                <a href="#" class="button expanded">Sign Up</a>
-        </div>
-        {% endfor %}
-</div> -->
-
+<div id="myModal" class="modal">
+       <span class="close">&times;</span>
+       <img class="modal-content" id="img01">
+        <div id="caption"></div>
+</div>
+              
+<script>
+              // Get the modal
+              var modal = document.getElementById("myModal");
+              
+              // Get the image and insert it inside the modal - use its "alt" text as a caption
+              var img = document.getElementById("myImg");
+              var modalImg = document.getElementById("img01");
+              var captionText = document.getElementById("caption");
+              img.onclick = function(){
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+              }
+              
+              // Get the <span> element that closes the modal
+              var span = document.getElementsByClassName("close")[0];
+              
+              // When the user clicks on <span> (x), close the modal
+              span.onclick = function() { 
+                modal.style.display = "none";
+              }
+</script>
 
 
 {% endblock %}
