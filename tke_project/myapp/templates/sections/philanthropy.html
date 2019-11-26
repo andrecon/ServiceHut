@@ -2,11 +2,12 @@
 {% load static %}
 
 {% block head %}
+<link rel="stylesheet" href="../../static/css/philan.css">
 {% endblock %}
 
 {% block header %}
 
-<style>
+<!-- <style>
                 body {font-family: Arial, Helvetica, sans-serif;}
                 
                 #myImg {
@@ -94,7 +95,7 @@
                     width: 100%;
                   }
                 }
-                </style>
+                </style> -->
 
 <h4 id="event-title" align="text-center">Upcoming Events</h4>
 
@@ -130,7 +131,7 @@
         <div id="caption"></div>
 </div>
               
-<script>
+<!-- <script>
               // Get the modal
               var modal = document.getElementById("myModal");
               
@@ -151,7 +152,7 @@
               span.onclick = function() { 
                 modal.style.display = "none";
               }
-</script>
+</script> -->
 
 
 {% endblock %}
@@ -161,4 +162,5 @@
 <!-- development version, includes helpful console warnings -->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="{% static "js/myvue.js" %}"></script>
+<script src="{% static "js/philanScript.js" %}"></script>
 {% endblock %}
