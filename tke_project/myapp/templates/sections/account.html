@@ -28,8 +28,8 @@
 
 	<div class="container">
 		<div class="gallery">
-            {% for post in object_list %}
-                {% if post.post_author == user.username %}
+			{% for post in object_list %}
+				{% if post.post_author == user.first_name|add:' '|add:user.last_name %}
                 <div class="gallery-item" tabindex="0">
                         <img src="{{ post.cover.url}}" class="gallery-image" alt="{{ post.title }}">
                         <div class="gallery-item-info">
