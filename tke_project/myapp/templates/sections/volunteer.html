@@ -42,13 +42,15 @@
     <button type="submit" class="alert button">Submit New Post</button>
 </form> -->
 
-<form action="/signup/" method="post">
+<form method="post">
     {% csrf_token %}
     {{ form.errors }}
     {{ form.email.label_tag }}
     {{ form.email }}
     {{ form.phone_number.label_tag }}
     {{ form.phone_number }}
+    {{ form.event.label_tag }}
+    {{ form.event }}
     <input type="submit" class="button expanded" value="Register" />
 </form>
 

@@ -17,7 +17,7 @@ class EventForm(forms.ModelForm):
 class VolunteerForm(forms.ModelForm):
     class Meta:
         model = Volunteer
-        fields = ['email', 'phone_number']
+        fields = ['email', 'phone_number', 'event']
 
 class GalleryForm(forms.ModelForm):
 

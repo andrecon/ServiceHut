@@ -26,13 +26,13 @@ class Volunteer(models.Model):
     email = models.CharField(max_length=100)
     phone_number = PhoneNumberField(default='+1')
 
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.email
 
     class Meta:
-        ordering = ['email', 'phone_number']
+        ordering = ['email', 'phone_number', 'event']
 
 
 

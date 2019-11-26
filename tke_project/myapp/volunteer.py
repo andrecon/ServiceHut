@@ -20,12 +20,13 @@ from .models import Event
 from .models import Volunteer
 from .forms import EventForm 
 from .forms import GalleryForm
+from .forms import VolunteerForm
 
 import dateutil.parser
 
 
 class CreateVolunteerView(CreateView): 
     model = Volunteer
-    form_class = EventForm
-    template_name = 'sectiontions/volunteer.html'
+    form_class = VolunteerForm
+    template_name = 'sections/volunteer.html'
     success_url = reverse_lazy('philanthropy')
