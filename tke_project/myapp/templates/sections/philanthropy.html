@@ -58,6 +58,7 @@
                         <div class="event-bottom-left">Currrent Volunteers: {{post.current_volunteers}}/{{post.max_volunteers}}</div>
                         <!-- <div class="event-bottom-right">{{post.status}}</div> -->
                 </div>
+                <a href="https://maps.google.com/?q={{post.address}},{{post.city}},{{post.state}}">location: {{post.city}}, {{post.state}}</a>
                 <a href="/volunteer" class="button expanded">Sign Up</a>
         </div>
         {% endfor %}
