@@ -308,7 +308,8 @@ ul li a {
 
 
 .thumbnail {
-  margin-bottom: 2rem;
+  height: 400px;
+  width: 500px;
 }
 
 
@@ -551,6 +552,7 @@ ul li a {
     padding-left: 50px;
     padding-top: 80px;
     padding-bottom: 40px;
+    text-align: center;
 }
 
 /* Line modifications */
