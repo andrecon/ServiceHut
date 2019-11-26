@@ -44,24 +44,10 @@
           <input type="number" name="max_volunteers" value="1" required="" >
       </label>
     </div>
-    <div class="small-12 medium-6 columns">
-      <label>
-        Address:
-        <input type="text" name="address" required="" >
-      </label>
-      <label>
-        City
-        <input type="text" name="city" required="" >
-    </label>
-    <label>
-      State
-      <input type="text" name="state">
-  </label>
-    </div>
     <p hidden>
       <label for="id_status">Status:</label> <input type="checkbox" name="status" id="id_status" checked="">
     </p>
-    <input type="hidden" name="post_author" id="id_post_author"  value={{user.username}} placeholder={{user.username}}>
+    <input type="hidden" name="post_author" id="id_post_author"  value={{user.first_name}}{{user.last_name}} placeholder={{user.first_name}}{{user.last_name}}>
     <button type="submit" class="alert button">Submit New Post</button>
 </form>
 
