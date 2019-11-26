@@ -6,7 +6,7 @@
 
 {% block header %}
 
-<h4 id="event-title">Upcoming Events</h4>
+<h4 id="event-title" align="text-center">Upcoming Events</h4>
 
 <hr>
 <div class="row">
@@ -53,12 +53,12 @@
                 <p>{{post.description}}</p>
                 <p>{{post.published_date}}</p>
                 <p>Posted By: {{post.post_author}}</p>
+                <a href="https://maps.google.com/?q={{post.address}},{{post.city}},{{post.state}}">location: {{post.city}}, {{post.state}}</a>
                 <div class="event-container">
-                        <img class="thumbnail" src="{{ post.cover.url}}" alt="{{ post.title }}" >
+                        <img class="thumbnail" src="{{ post.cover.url}}" alt="{{ post.title }}" style="height: 400px; width: 400px;" >
                         <div class="event-bottom-left">Currrent Volunteers: {{post.current_volunteers}}/{{post.max_volunteers}}</div>
                         <!-- <div class="event-bottom-right">{{post.status}}</div> -->
                 </div>
-                <a href="https://maps.google.com/?q={{post.address}},{{post.city}},{{post.state}}">location: {{post.city}}, {{post.state}}</a>
                 <a href="/volunteer" class="button expanded">Sign Up</a>
         </div>
         {% endfor %}
