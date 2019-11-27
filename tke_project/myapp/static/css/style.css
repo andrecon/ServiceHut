@@ -322,7 +322,7 @@ ul li a {
 .event-bottom-left {
   position: absolute;
   bottom: 8px;
-  left: 16px;
+  left: 0px;
 }
 
 .event-bottom-right {
@@ -548,12 +548,12 @@ ul li a {
 
 
 /* Philanthropy */
-#event-title{
+/* #event-title{
     padding-left: 50px;
     padding-top: 80px;
     padding-bottom: 40px;
     text-align: center;
-}
+} */
 
 /* Line modifications */
 hr {
