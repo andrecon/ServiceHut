@@ -29,14 +29,14 @@
                     <a href="/" class="hvr-underline-from-center">Home</a>
                   </li>
                   <li>
-                    <a href="/aboutUs" class="hvr-underline-from-center">About Us</a>
+                      <a href="/philanthropy" class="hvr-underline-from-center">Philanthropy</a>
                   </li>
                   <li>
-                    <a href="/philanthropy" class="hvr-underline-from-center">Philanthropy</a>
-                  </li>
-                  <li>
-                    <a href="/contact" class="hvr-underline-from-center">Contact Us</a>
-                  </li>
+                      <a href="/aboutUs" class="hvr-underline-from-center">About Us</a>
+                    </li>
+                    <li>
+                      <a href="/contact" class="hvr-underline-from-center">Contact Us</a>
+                    </li>
                   {% if user.is_authenticated %}
                   <li>
                     <a href="/account" class="hvr-underline-from-center">My Account</a>
@@ -53,7 +53,7 @@
                   {% endif %}
                   {% if user.is_superuser %}
                   <li>
-                    <a href="/admin" class="hvr-underline-from-center"> Admin Page</a>
+                    <a href="/admin" class="hvr-underline-from-center"> Admin</a>
                   </li>
                   {% else %}
                   {% endif %}
@@ -79,7 +79,7 @@
           
             <a href="{% url 'philanthropy' %}">Philanthropy</a>
             
-            <a href="#">Contact Us</a>
+            <a href="/contact">Contact Us</a>
             {% if user.is_authenticated %}
               <a href="/account">My Account</a>
             {% endif %}

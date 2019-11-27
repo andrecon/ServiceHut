@@ -5,58 +5,45 @@
 {% endblock %}
 
 {% block header %}
-
-<!-- templates/post.html -->
-
-<!-- <h3>Create Post Page</h3>
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Submit New Post</button>
-</form> -->
-
+<div class="grid-x grid-padding-x">
+<div class="large-offset-4 medium-offset-4 cell">   
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.errors }}
     {{ form.non_field_errors }}
-    <div class="row">
-        <div class="large-12 columns">
-            <label>Title
-                <input name="title" required="" id="id_title" type="text" placeholder="Title" />
-            </label>
-        </div>
-    </div>
-    <div class="row">
-          <div class="large-12 columns">
-            <label>Description
-              <textarea name="description" required="" id="id_description" placeholder="Description"></textarea>
-            </label>
-          </div>
-    </div>
-    <p><label for="id_cover">Image Cover</label> <input type="file" name="cover" accept="image/*" required="" id="id_cover"></p>
+    <table class="table">
+
+    <label>Title
+      <input name="title" required="" id="id_title" type="text" placeholder="Title" />
+    </label>
+    <label>Description
+      <textarea name="description" required="" id="id_description" placeholder="Description"></textarea>
+    </label>
+    <p>
+      <label for="id_cover">Image Cover</label> <input type="file" name="cover" accept="image/*" required="" id="id_cover">
+    </p>
     <p>
       <label for="id_created_date">Event Date (YYYY-MM-DD)</label> 
       <input type="text" class="span2" required="" name="created_date" id="id_created_date">
     </p>
     <div class="small-12 medium-6 columns">
-      <label>
-          Number of Volunteers
-          <input type="number" name="max_volunteers" value="1" required="" >
-      </label>
-    </div>
-    <div class="small-12 medium-6 columns">
-      <label>
+    <label>
+        Number of Volunteers
+        <input type="number" name="max_volunteers" value="1" required="" style="width: 5em;">
+    </label>
+    
+    <label>
         Address:
         <input type="text" name="address" required="" >
-      </label>
-      <label>
+    </label>
+    <label>
         City
         <input type="text" name="city" required="" >
     </label>
     <label>
       State
       <input type="text" name="state">
-  </label>
+    </label>
     </div>
     <p hidden>
       <label for="id_status">Status:</label> <input type="checkbox" name="status" id="id_status" checked="">
@@ -64,48 +51,10 @@
     <input type="hidden" name="post_author" id="id_post_author"  value="{{user.first_name}} {{user.last_name}}" placeholder={{user.username}}>
     <button type="submit" class="alert button">Submit New Post</button>
 </form>
-
-<!-- <form action="/post/" method="post">
-  {% csrf_token %}
-  <label for="title">Title: </label>
-  {{ form.title }}
-
-  <label for="description">Description: </label>
-  {{ form.description }}
-
-  <label for="created_date">Event Date: </label>
-  {{ form.created_date }}
-
-  <label for="max_volunteers">Max Volunteers: </label>
-  {{ form.max_volunteers }}
-
-  <label for="status">status: </label>
-  {{ form.status }}
-
-  <label for="cover">Cover Image: </label>
-  {{ form.cover }}
-  <input type="submit" class="button" value="Add Post">
-</form> -->
-
-
-
-
-<!-- <form action="/" method="post">
-  {% csrf_token %}
-  {{ form.form_}}
-  {{ form.post_field }}
-  {{ form.post_field.erros }}
-</form> -->
-<!-- <form method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-<tr><th><label for="id_title">Title:</label></th><td><input type="text" name="title" value="post" maxlength="240" required id="id_title"></td></tr>
-<tr><th><label for="id_description">Description:</label></th><td><input type="text" name="description" value="post desc" maxlength="240" required id="id_description"></td></tr>
-<tr><th><label for="id_created_date">Created Date:</label></th><td><input type="text" name="created_date" value="2019-11-28" required id="id_created_date"></td></tr>
-<tr><th><label for="id_max_volunteers">Max Volunteers:</label></th><td><input type="number" name="max_volunteers" value="5" required id="id_max_volunteers"></td></tr>
-<tr><th><label for="id_status">Status:</label></th><td><input type="checkbox" name="status" required id="id_status" checked></td></tr>
-<tr><th><label for="id_cover">Image Cover:</label></th><td><ul class="errorlist"><li>This field is required.</li></ul><input type="file" name="cover" accept="image/*" required id="id_cover"></td></tr>
-<button type="submit" class="alert button">Submit New Post</button>
-</form> -->
+      
+</table>
+</div>
+</div>
 
 {% endblock %}
 
