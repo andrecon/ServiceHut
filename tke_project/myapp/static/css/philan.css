@@ -87,3 +87,18 @@ body {font-family: Arial, Helvetica, sans-serif;}
     width: 100%;
   }
 }
+
+
+/* Button */
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.thumbnail {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 3rem;
+}
