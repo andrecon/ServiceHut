@@ -37,7 +37,16 @@
                                 <li class="gallery-item-likes"><span class="visually-hidden">Volunteers :</span><i class="fa fa-child" aria-hidden="true"></i> {{post.max_volunteers}}</li>
                             </ul>
                         </div>
-                </div>
+				</div>
+				<ol style="list-style-type: none;">
+					<LH>Volunteer List: </LH>
+					{% for volunteer in post.volunteer_set.all %}
+					<li>
+						<a href = "/exampleFolder/file1.txt">{{volunteer.name}}</a>
+					</li>
+					{% endfor %}
+				</ol>
+				<hr>
                 {% else %}
                 {% endif %}
             {% endfor %}
@@ -61,5 +70,6 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="{% static "js/myvue.js" %}"></script>
 <link rel="stylesheet" href="{% static "css/account.css" %}">
+<script src="{% static "js/account.js" %}"></script>
 <!-- <script src="https://kit.fontawesome.com/878f6071f2.js" crossorigin="anonymous"></script> -->
 {% endblock %}

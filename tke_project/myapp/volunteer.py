@@ -29,4 +29,6 @@ class CreateVolunteerView(CreateView):
     model = Volunteer
     form_class = VolunteerForm
     template_name = 'sections/volunteer.html'
+    # qs = Children.objects.filter(form_class).values('parent')
+    # print(qs)
     success_url = reverse_lazy('philanthropy')

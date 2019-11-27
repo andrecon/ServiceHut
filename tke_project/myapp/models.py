@@ -23,6 +23,7 @@ class Event(models.Model):
         return self.title
 
 class Volunteer(models.Model):
+    name = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
     phone_number = PhoneNumberField(default='+1')
 
@@ -32,7 +33,7 @@ class Volunteer(models.Model):
         return self.email
 
     class Meta:
-        ordering = ['email', 'phone_number', 'event']
+        ordering = ['name', 'email', 'phone_number', 'event']
 
 
 
