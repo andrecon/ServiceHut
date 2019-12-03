@@ -2,6 +2,8 @@ from django.db import models
 from datetime import datetime
 from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.auth.models import User
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 # Create your models here.
 
@@ -27,14 +29,13 @@ class Volunteer(models.Model):
     email = models.CharField(max_length=100)
     phone_number = PhoneNumberField(default='+1')
 
-    event = models.ForeignKey(Event, on_delete=models.CASCADE, null=True)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.email
 
     class Meta:
         ordering = ['name', 'email', 'phone_number', 'event']
-
 
 
 class Gallery(models.Model):
