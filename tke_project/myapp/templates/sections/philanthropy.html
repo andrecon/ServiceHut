@@ -114,11 +114,13 @@
         <div class="cell">
                 <h5>{{ post.title }}</h5>
                 <p>{{post.description}}</p>
-                <p>{{post.published_date}}</p>
                 <p>Posted By: {{post.post_author}}</p>
-                <a href="https://maps.google.com/?q={{post.address}},{{post.city}},{{post.state}}">location: {{post.city}}, {{post.state}}</a>
+                <p>Published Date: {{post.published_date}}</p>
+                <p>Event Date: {{post.created_date}}</p>
+                <a href="https://maps.google.com/?q={{post.address}},{{post.city}},{{post.state}}">Location: {{post.city}}, {{post.state}}</a>
                 <div class="event-container">
                         <img id= "myImg-{{post.title}}" class="thumbnail" src="{{ post.cover.url}}" alt="{{ post.title }}" style="height: 400px; width: 400px; overflow: hidden;" onclick ='display(this);'>
+                        <p id="here" style="display: none;">{{post.description}}</p>
                         <div class="event-bottom-left">Number of Volunteers needed: {{post.max_volunteers}}</div>
                         <!-- <div class="event-bottom-right">{{post.status}}</div> -->
                 </div>

@@ -4,6 +4,7 @@ var modal = document.getElementById("myModal");
 // Get the image and insert it inside the modal - use its "alt" text as a caption
 // var img = document.getElementById("myImg");
 var modalImg = document.getElementById("img01");
+
 var captionText = document.getElementById("caption");
 
 function display(element)
@@ -12,7 +13,11 @@ function display(element)
 
     modal.style.display = "block";
     modalImg.src = img.src;
-    captionText.innerHTML = img.alt;
+    var data = img.nextSibling.nextElementSibling.innerHTML;
+    // var data = $(element.id).next("p").attr("id");
+
+    // captionText.innerHTML = img.alt;
+    captionText.innerHTML = data;
 }
 
 // img.onclick = function(){
@@ -47,7 +52,6 @@ span.onclick = function() {
 $(function() {
   $('p.edit').click(function(e) {
     e.preventDefault();
-    // console.log($(this).text())
     $(this).text(($(this).text() == 'Volunteer List: [Click to Show Volunteers]') ? 'Volunteer List:' : 'Volunteer List: [Click to Show Volunteers]').fadeIn();
     // var list = $(this).next("ol").attr("id");
     var list = $(this).next("spam").next("ol").attr("id");
@@ -55,10 +59,10 @@ $(function() {
     // var total = $(this).next("ol").next("spam").attr("id");
     var total = $(this).next("spam").attr("id");
 
-    console.log(total);
+    // console.log(total);
     var theList = document.getElementById(list).getElementsByTagName("li");
     var numberOfItems = theList.length;
-    console.log(numberOfItems);
+    // console.log(numberOfItems);
 
     document.getElementById(total).innerHTML = "Current Number of Volunteers: " + numberOfItems.toString();
     // $(total).text(numberOfItems).fadeIn();
@@ -81,7 +85,7 @@ function hide(element, total)
   }
 
 
-  console.log(list);
+  // console.log(list);
   if (list.style.display == "none"){
     list.style.display = "block";
   }else{
