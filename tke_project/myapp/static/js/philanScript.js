@@ -48,7 +48,7 @@ $(function() {
   $('p.edit').click(function(e) {
     e.preventDefault();
     // console.log($(this).text())
-    $(this).text(($(this).text() == 'Volunteer List: (Show Volunteers)') ? 'Volunteer List:' : 'Volunteer List: (Show Volunteers)').fadeIn();
+    $(this).text(($(this).text() == 'Volunteer List: [Click to Show Volunteers]') ? 'Volunteer List:' : 'Volunteer List: [Click to Show Volunteers]').fadeIn();
     // var list = $(this).next("ol").attr("id");
     var list = $(this).next("spam").next("ol").attr("id");
 
