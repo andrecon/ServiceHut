@@ -75,7 +75,3 @@ class RUSH(models.Model):
         return self.name
 
 
-# class UserProfile(models.Model):
-#     url = models.URLField()
-#     phone_numer = models.PhoneNumberField()
-#     user = models.ForeignKey(User, unique=True)
