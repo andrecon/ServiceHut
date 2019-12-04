@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block head %}
+<!-- <script src="https://kit.fontawesome.com/878f6071f2.js" crossorigin="anonymous"></script> -->
 {% endblock %}
 
 {% block header %}
@@ -34,7 +35,9 @@
                         <img src="{{ post.cover.url}}" class="gallery-image" alt="{{ post.title }}">
                         <div class="gallery-item-info">
                             <ul>
-                                <li class="gallery-item-likes"><span class="visually-hidden">Volunteers :</span><i class="fa fa-child" aria-hidden="true"></i> {{post.max_volunteers}}</li>
+								<!-- <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 56</li> -->
+								<li class="gallery-item-likes"><span class="visually-hidden">Volunteers :</span><i class="fa fa-child" aria-hidden="true"></i> {{post.max_volunteers}}</li>
+								<!-- <li class="gallery-item-likes"><span class="visually-hidden">Volunteers :</span><i class="fas fa-hands-helping" aria-hidden="true"></i> {{post.max_volunteers}}</li> -->
                             </ul>
                         </div>
 				</div>
@@ -71,5 +74,6 @@
 <script src="{% static "js/myvue.js" %}"></script>
 <link rel="stylesheet" href="{% static "css/account.css" %}">
 <script src="{% static "js/account.js" %}"></script>
+<!-- <script src="https://kit.fontawesome.com/878f6071f2.js" crossorigin="anonymous"></script> -->
 <!-- <script src="https://kit.fontawesome.com/878f6071f2.js" crossorigin="anonymous"></script> -->
 {% endblock %}

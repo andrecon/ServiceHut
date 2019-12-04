@@ -118,9 +118,20 @@
                 <a href="https://maps.google.com/?q={{post.address}},{{post.city}},{{post.state}}">location: {{post.city}}, {{post.state}}</a>
                 <div class="event-container">
                         <img id= "myImg-{{post.title}}" class="thumbnail" src="{{ post.cover.url}}" alt="{{ post.title }}" style="height: 400px; width: 400px; overflow: hidden;" onclick ='display(this);'>
-                        <div class="event-bottom-left">Currrent Volunteers: {{post.current_volunteers}}/{{post.max_volunteers}}</div>
+                        <div class="event-bottom-left">Number of Volunteers needed: {{post.max_volunteers}}</div>
                         <!-- <div class="event-bottom-right">{{post.status}}</div> -->
                 </div>
+                <p class=" edit" id = "list1" >Volunteer List: (Show Volunteers)</p>
+                <spam id="{{post.published_date}}" style="display: none;"> Current Number of Volunteers: </spam>
+                <ol id="{{ post.title }}" style="list-style-type: none; display: none;">
+                  <!-- <LH id = "list1" onclick = "openList1()" >Volunteer List: </LH> -->
+                  {% for volunteer in post.volunteer_set.all %}
+                  <li>
+                    <a href = "/exampleFolder/file1.txt">{{volunteer.name}}</a>
+                  </li>
+                  {% endfor %}
+                </ol>
+
                 <a href="/volunteer" class="button expanded">Sign Up</a>
         </div>
         {% endfor %}
