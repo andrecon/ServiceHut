@@ -38,7 +38,7 @@ class GalleryView(ListView):
 class CreateImageView(CreateView): 
     model = Gallery
     form_class = GalleryForm
-    template_name = 'sections/PhotoPost.html'
+    template_name = 'sections/photoPost.html'
     success_url = reverse_lazy('index')
 
 # class SignUp(generic.CreateView):
