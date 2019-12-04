@@ -43,7 +43,8 @@
                   <!-- <LH id = "list1" onclick = "openList1()" >Volunteer List: </LH> -->
                   {% for volunteer in post.volunteer_set.all %}
                   <li>
-                    <a href = "/exampleFolder/file1.txt">{{volunteer.name}}</a>
+                    <p>{{volunteer.name}}</p>
+                    <!-- <a href = "/exampleFolder/file1.txt">{{volunteer.name}}</a> -->
                   </li>
                   {% endfor %}
                 </ol>
