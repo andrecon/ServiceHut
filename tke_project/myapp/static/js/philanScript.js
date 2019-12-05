@@ -14,17 +14,10 @@ function display(element)
     modal.style.display = "block";
     modalImg.src = img.src;
     var data = img.nextSibling.nextElementSibling.innerHTML;
-    // var data = $(element.id).next("p").attr("id");
-
-    // captionText.innerHTML = img.alt;
+    
     captionText.innerHTML = data;
 }
 
-// img.onclick = function(){
-//   modal.style.display = "block";
-//   modalImg.src = this.src;
-//   captionText.innerHTML = this.alt;
-// }
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
@@ -35,38 +28,20 @@ span.onclick = function() {
 }
 
 
-// function openList1(element) {
-//   var list = document.getElementById(element.id);
-//   // console.log($(this));
-//   // var list = $(this).closest('p').next("ol").attr('id')
-//   console.log(list);
-
-//   if (list.style.display == "none"){
-//       list.style.display = "block";
-//   }else{
-//       list.style.display = "none";
-//   }
-// }
-
-
 $(function() {
   $('p.edit').click(function(e) {
     e.preventDefault();
     $(this).text(($(this).text() == 'Volunteer List: [Click to Show Volunteers]') ? 'Volunteer List:' : 'Volunteer List: [Click to Show Volunteers]').fadeIn();
-    // var list = $(this).next("ol").attr("id");
+    
     var list = $(this).next("spam").next("ol").attr("id");
 
-    // var total = $(this).next("ol").next("spam").attr("id");
     var total = $(this).next("spam").attr("id");
 
-    // console.log(total);
     var theList = document.getElementById(list).getElementsByTagName("li");
     var numberOfItems = theList.length;
-    // console.log(numberOfItems);
-
+    
     document.getElementById(total).innerHTML = "Current Number of Volunteers: " + numberOfItems.toString();
-    // $(total).text(numberOfItems).fadeIn();
-
+   
     hide(list, total);
 
   });
