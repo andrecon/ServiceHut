@@ -340,11 +340,6 @@ ul li a {
 /* .pagination-event a:hover:not(.active) {background-color: #ddd;} */
 
 
-/* Footer */
-/* * {
-  font-family: Open Sans;
-} */
-
 .footer-distributed{
 	background: #5C5A5A;
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
@@ -548,12 +543,7 @@ ul li a {
 
 
 /* Philanthropy */
-/* #event-title{
-    padding-left: 50px;
-    padding-top: 80px;
-    padding-bottom: 40px;
-    text-align: center;
-} */
+
 
 /* Line modifications */
 hr {

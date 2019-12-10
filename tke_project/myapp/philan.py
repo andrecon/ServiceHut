@@ -34,34 +34,6 @@ class CreateEventView(CreateView):
     success_url = reverse_lazy('philanthropy')
 
 
-
-# def post_data(request):
-#     if request.method == "POST":
-#         form_instance = forms.EventForm(request.POST)
-#         if form_instance.is_valid():
-#             # form_instance.save()
-#             new_post = models.Event()
-#             new_post.title = form_instance.cleaned_data["title"]
-#             new_post.description = form_instance.cleaned_data['description']
-#             new_post.cover = form_instance.cleaned_data['id_cover']
-#             new_post.created_date = form_instance.cleaned_data['created_date']
-#             new_post.max_volunteers = form_instance.cleaned_data['number']
-            
-#             new_post.post_author =  str(request.user.username)
-#             new_post.save()
-#             form_instance = forms.EventForm()
-#             return redirect('/philanthropy')
-#         else:
-#             print("nope")
-#     else:
-#         form_instance = forms.EventForm()
-#     context = {
-#         "form":form_instance,
-#     }
-#     return render(request, "sections/post.html", context=context)
-
-
-
 def index(request):
     form_instance = forms.EventForm()
     event_query = models.Event.objects.all()
